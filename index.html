@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placement Portal - Build Your Career</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<base target="_blank">
+</head>
+<body>
+
+<nav id="navbar">
+  <h1>🚀 Placement Portal</h1>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">Register</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/admin">Admin</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="animate-float" style="margin-bottom: 2rem;">
+    <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto; box-shadow: 0 0 60px rgba(99, 102, 241, 0.4);">
+      💼
+    </div>
+  </div>
+
+  <h2 class="animate-fade-in">Build Your Career With Top Companies</h2>
+  <p class="animate-fade-in" style="animation-delay: 0.2s;">
+    Discover opportunities from leading tech companies. Apply with one click and accelerate your professional growth.
+  </p>
+
+  <div class="animate-fade-in" style="animation-delay: 0.4s; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+    <button onclick="startNow()" class="animate-pulse">
+      <span>Get Started</span>
+      <span>→</span>
+    </button>
+    <a href="register.html" class="btn btn-secondary">Create Account</a>
+  </div>
+
+  <div class="stats-grid animate-fade-in" style="animation-delay: 0.6s; margin-top: 3rem;">
+    <div class="stat-card">
+      <div class="number">500+</div>
+      <div class="label">Job Openings</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">120+</div>
+      <div class="label">Companies</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">10k+</div>
+      <div class="label">Students Placed</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">98%</div>
+      <div class="label">Success Rate</div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="features-section">
+  <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+    Why Choose Us?
+  </h2>
+  <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 2rem;">
+    We connect talented students with industry-leading companies through our streamlined placement process.
+  </p>
+
+  <div class="features-grid stagger-children">
+    <div class="glass-card">
+      <div class="feature-icon">🏢</div>
+      <h3>Top Recruiters</h3>
+      <p style="color: var(--gray); margin-top: 0.5rem;">Get opportunities from Fortune 500 companies and innovative startups alike.</p>
+    </div>
+
+    <div class="glass-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Quick Apply</h3>
+      <p style="color: var(--gray); margin-top: 0.5rem;">One-click application process with instant confirmation and tracking.</p>
+    </div>
+
+    <div class="glass-card">
+      <div class="feature-icon">📈</div>
+      <h3>Career Growth</h3>
+      <p style="color: var(--gray); margin-top: 0.5rem;">Access mentorship, skill assessments, and personalized career roadmaps.</p>
+    </div>
+
+    <div class="glass-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Smart Matching</h3>
+      <p style="color: var(--gray); margin-top: 0.5rem;">AI-powered job recommendations based on your skills and preferences.</p>
+    </div>
+
+    <div class="glass-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Secure Process</h3>
+      <p style="color: var(--gray); margin-top: 0.5rem;">Your data is encrypted and protected with enterprise-grade security.</p>
+    </div>
+
+    <div class="glass-card">
+      <div class="feature-icon">🌐</div>
+      <h3>Global Reach</h3>
+      <p style="color: var(--gray); margin-top: 0.5rem;">Connect with companies across the globe and work from anywhere.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 4rem 2rem; text-align: center;">
+  <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Ready to Start?</h2>
+  <p style="color: var(--gray); margin-bottom: 2rem;">Join thousands of students who have already found their dream jobs.</p>
+  <a href="register.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+    Create Free Account
+  </a>
+</section>
+
+<footer>
+  <p>© 2026 Placement Portal | Built with 💜 for students worldwide</p>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>
