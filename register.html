@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Placement Portal</title>
+<link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+
+<nav id="navbar">
+  <h1>🚀 Placement Portal</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html" class="active">Register</a></li>
+  </ul>
+</nav>
+
+<section class="hero" style="min-height: 80vh;">
+  <div class="glass-card form-container animate-fade-in">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--success), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem;">
+        📝
+      </div>
+      <h2 style="font-size: 1.75rem; font-weight: 700;">Create Account</h2>
+      <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.5rem;">Start your career journey today</p>
+    </div>
+
+    <form action="/register" method="POST" onsubmit="return handleRegister(event)">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm">Confirm Password</label>
+        <input type="password" id="confirm" name="confirm" placeholder="Repeat your password" required>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; font-size: 0.875rem; color: var(--gray);">
+          <input type="checkbox" required style="width: auto; margin-top: 0.2rem;">
+          <span>I agree to the <a href="#" style="color: var(--primary-light);">Terms of Service</a> and <a href="#" style="color: var(--primary-light);">Privacy Policy</a></span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-success" style="width: 100%; justify-content: center;">
+        <span>Create Account</span>
+        <span>✓</span>
+      </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
+      <p style="color: var(--gray); font-size: 0.9rem;">
+        Already have an account? 
+        <a href="login.html" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">Sign in</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Placement Portal | All Rights Reserved</p>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  function handleRegister(e) {
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirm').value;
+
+    if (password !== confirm) {
+      showToast('Passwords do not match!', 'error');
+      e.preventDefault();
+      return false;
+    }
+
+    showToast('Creating your account...', 'info');
+    return true;
+  }
+</script>
+</body>
+</html>

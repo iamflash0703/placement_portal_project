@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Placement Portal</title>
+<link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+
+<nav id="navbar">
+  <h1>🚀 Placement Portal</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" onclick="logoutUser()">Logout</a></li>
+    <li>
+      <button onclick="toggleMode()" class="dark-mode-toggle" title="Toggle Dark Mode">
+        🌙
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<section class="hero" style="min-height: auto; padding-top: 3rem;">
+
+  <!-- Profile Section -->
+  <div class="profile-section animate-fade-in">
+    <div style="position: relative;">
+      <img id="profilePic" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=200&h=200&fit=crop" class="profile-pic" alt="Profile">
+      <label style="position: absolute; bottom: 0; right: 0; width: 36px; height: 36px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 3px solid var(--dark);">
+        📷
+        <input type="file" onchange="uploadPhoto(event)" style="display: none;" accept="image/*">
+      </label>
+    </div>
+    <h2 id="welcome" style="font-size: 1.75rem; font-weight: 700;"></h2>
+    <p style="color: var(--gray);">Student Dashboard</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid animate-fade-in" style="animation-delay: 0.2s; max-width: 800px;">
+    <div class="stat-card">
+      <div class="number" id="appliedCount">0</div>
+      <div class="label">Jobs Applied</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" id="savedCount">0</div>
+      <div class="label">Saved Jobs</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" style="color: var(--success);">3</div>
+      <div class="label">Interviews</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" style="color: var(--accent);">85%</div>
+      <div class="label">Profile Score</div>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="search-box animate-fade-in" style="animation-delay: 0.3s;">
+    <input type="text" id="searchBox" placeholder="Search jobs by title, company, or location..." onkeyup="searchJobs()">
+  </div>
+
+  <!-- Jobs Section -->
+  <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <h3 style="font-size: 1.5rem; font-weight: 700;">Available Jobs</h3>
+      <div style="display: flex; gap: 0.5rem;">
+        <button class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Filter</button>
+        <button class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Sort</button>
+      </div>
+    </div>
+
+    <div class="job-grid" id="jobContainer">
+      <div class="job-card job" data-title="Web Developer" data-company="Infosys" data-location="Bangalore">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+          <h3>Web Developer</h3>
+          <span style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">New</span>
+        </div>
+        <div class="company">Infosys</div>
+        <div class="location">📍 Bangalore, India</div>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Full-time</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button onclick="applyJob('Web Developer')" style="flex: 1; padding: 0.625rem; font-size: 0.875rem;">
+            Apply Now
+          </button>
+          <button onclick="saveJob('Web Developer')" class="btn-secondary" style="padding: 0.625rem; font-size: 0.875rem;">
+            🔖
+          </button>
+        </div>
+      </div>
+
+      <div class="job-card job" data-title="Java Developer" data-company="TCS" data-location="Mumbai">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+          <h3>Java Developer</h3>
+          <span style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Hot</span>
+        </div>
+        <div class="company">TCS</div>
+        <div class="location">📍 Mumbai, India</div>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Full-time</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button onclick="applyJob('Java Developer')" style="flex: 1; padding: 0.625rem; font-size: 0.875rem;">
+            Apply Now
+          </button>
+          <button onclick="saveJob('Java Developer')" class="btn-secondary" style="padding: 0.625rem; font-size: 0.875rem;">
+            🔖
+          </button>
+        </div>
+      </div>
+
+      <div class="job-card job" data-title="Frontend Developer" data-company="Wipro" data-location="Hyderabad">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+          <h3>Frontend Developer</h3>
+          <span style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Remote</span>
+        </div>
+        <div class="company">Wipro</div>
+        <div class="location">📍 Hyderabad, India (Remote)</div>
+        <div class="tags">
+          <span class="tag">Vue.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Contract</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button onclick="applyJob('Frontend Developer')" style="flex: 1; padding: 0.625rem; font-size: 0.875rem;">
+            Apply Now
+          </button>
+          <button onclick="saveJob('Frontend Developer')" class="btn-secondary" style="padding: 0.625rem; font-size: 0.875rem;">
+            🔖
+          </button>
+        </div>
+      </div>
+
+      <div class="job-card job" data-title="Data Analyst" data-company="Accenture" data-location="Pune">
+        <h3>Data Analyst</h3>
+        <div class="company">Accenture</div>
+        <div class="location">📍 Pune, India</div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Full-time</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button onclick="applyJob('Data Analyst')" style="flex: 1; padding: 0.625rem; font-size: 0.875rem;">
+            Apply Now
+          </button>
+          <button onclick="saveJob('Data Analyst')" class="btn-secondary" style="padding: 0.625rem; font-size: 0.875rem;">
+            🔖
+          </button>
+        </div>
+      </div>
+
+      <div class="job-card job" data-title="DevOps Engineer" data-company="IBM" data-location="Chennai">
+        <h3>DevOps Engineer</h3>
+        <div class="company">IBM</div>
+        <div class="location">📍 Chennai, India</div>
+        <div class="tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Full-time</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button onclick="applyJob('DevOps Engineer')" style="flex: 1; padding: 0.625rem; font-size: 0.875rem;">
+            Apply Now
+          </button>
+          <button onclick="saveJob('DevOps Engineer')" class="btn-secondary" style="padding: 0.625rem; font-size: 0.875rem;">
+            🔖
+          </button>
+        </div>
+      </div>
+
+      <div class="job-card job" data-title="Mobile Developer" data-company="Google" data-location="Bangalore">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+          <h3>Mobile Developer</h3>
+          <span style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">New</span>
+        </div>
+        <div class="company">Google</div>
+        <div class="location">📍 Bangalore, India</div>
+        <div class="tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">Dart</span>
+          <span class="tag">Full-time</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button onclick="applyJob('Mobile Developer')" style="flex: 1; padding: 0.625rem; font-size: 0.875rem;">
+            Apply Now
+          </button>
+          <button onclick="saveJob('Mobile Developer')" class="btn-secondary" style="padding: 0.625rem; font-size: 0.875rem;">
+            🔖
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applied Jobs History -->
+  <div style="width: 100%; max-width: 800px; margin: 3rem auto; padding: 0 1rem;">
+    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Application History</h3>
+    <div id="history" class="glass-card" style="min-height: 100px; display: flex; flex-direction: column; gap: 0.75rem;">
+      <p style="color: var(--gray); text-align: center; padding: 2rem;">No applications yet. Start applying to jobs above!</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Placement Portal | All Rights Reserved</p>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Update stats on load
+  window.addEventListener('load', () => {
+    const jobs = localStorage.getItem("jobs");
+    if (jobs) {
+      const count = jobs.split('<br>').filter(j => j.trim()).length;
+      document.getElementById('appliedCount').textContent = count;
+    }
+  });
+
+  function saveJob(job) {
+    showToast(`Saved ${job} to bookmarks!`, 'success');
+    let saved = JSON.parse(localStorage.getItem("savedJobs") || "[]");
+    if (!saved.includes(job)) {
+      saved.push(job);
+      localStorage.setItem("savedJobs", JSON.stringify(saved));
+      document.getElementById('savedCount').textContent = saved.length;
+    }
+  }
+</script>
+</body>
+</html>
